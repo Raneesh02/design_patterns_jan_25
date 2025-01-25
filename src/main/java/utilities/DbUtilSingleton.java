@@ -8,14 +8,27 @@ public class DbUtilSingleton {
     }
 
     // Early Initialization
-    final static DbUtilSingleton dbUtilSingleton = new DbUtilSingleton();
+//    final static DbUtilSingleton dbUtilSingleton = new DbUtilSingleton();
 
-    static public DbUtilSingleton getInstance(){
-        return  dbUtilSingleton;
-    }
+//    static public DbUtilSingleton getInstance(){
+//        return  dbUtilSingleton;
+//    }
 
 
     // Early Initialization
+
+    //Lazy Initialization
+    static DbUtilSingleton dbUtilSingleton = null;
+
+    static public DbUtilSingleton getInstance(){
+        if(dbUtilSingleton!=null){
+            return  dbUtilSingleton;
+        }
+        dbUtilSingleton = new DbUtilSingleton();
+        return dbUtilSingleton;
+    }
+
+    //Lazy Initialization
 
 
     public void runQuery(String query){
