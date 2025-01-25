@@ -2,6 +2,9 @@ package tests;
 
 import Base.BaseTest;
 import Base.DriverManager;
+import com.beust.ah.A;
+import facades.AddToCartFacade;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.CartPage;
 import pages.FilterSideBar;
@@ -32,5 +35,15 @@ public class CartTests extends BaseTest {
         productDetailPage.addToCart();
         CartPage cartPage = productDetailPage.goToCart();
         //Assertions
+    }
+
+    @Test
+    public void testCartHammersFacade(){
+        AddToCartFacade addToCartFacade= new AddToCartFacade();
+        CartPage cartPage = addToCartFacade.addToCart("Hammer", 2);
+
+        //Assertions
+        Assert.assertTrue(cartPage.isProceedPresent());
+        Assert.assertTrue(cartPage.getProductName().contains("Hammer"));
     }
 }
