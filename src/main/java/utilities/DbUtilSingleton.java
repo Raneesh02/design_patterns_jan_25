@@ -21,10 +21,11 @@ public class DbUtilSingleton {
     static DbUtilSingleton dbUtilSingleton = null;
 
     static public DbUtilSingleton getInstance(){
-        if(dbUtilSingleton!=null){
+        //Threads 1 and 2
+        if(dbUtilSingleton!=null){ // thread 2
             return  dbUtilSingleton;
         }
-        dbUtilSingleton = new DbUtilSingleton();
+        dbUtilSingleton = new DbUtilSingleton(); //thread 1
         return dbUtilSingleton;
     }
 
