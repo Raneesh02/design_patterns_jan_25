@@ -22,7 +22,7 @@ public class DbUtilSingleton {
         System.out.println("Query : "+ query + " ran");
     }
 
-    public void printConfit(){
+    public static void printConfig(){
         System.out.println("DbUtil Configuration");
     }
 
