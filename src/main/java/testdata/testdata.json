@@ -1,0 +1,14 @@
+{
+  "Products": [
+    {
+      "type": "Hammer",
+      "qty": 2,
+      "name": "Thor Hammer"
+    },
+    {
+      "type": "Pliers",
+      "qty": 3,
+      "name": "Thor Plier"
+    }
+  ]
+}
