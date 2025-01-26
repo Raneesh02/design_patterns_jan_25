@@ -2,13 +2,12 @@ package facades;
 
 import Base.DriverManager;
 import pages.*;
-import pages.mweb.MWebHomePage;
+import pages.web.WebCartPage;
 import pages.web.WebHomePage;
-import utilities.PropertyHandler;
 
 public class AddToCartFacade {
 
-    public CartPage addToCart(String categoryName, int qty){
+    public WebCartPage addToCart(String categoryName, int qty){
         WebHomePage homepage = new WebHomePage(DriverManager.getDriver());
         FilterSideBar filterBar = homepage.getFilterBar();
         filterBar.selectFilterCategory(categoryName);

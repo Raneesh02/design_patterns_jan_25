@@ -5,7 +5,7 @@ import Base.DriverManager;
 import facades.AddToCartFacade;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.CartPage;
+import pages.web.WebCartPage;
 import pages.FilterSideBar;
 import pages.web.WebHomePage;
 import pages.ProductDetailPage;
@@ -20,7 +20,7 @@ public class CartTests extends BaseTest {
         ProductDetailPage productDetailPage = homepage.selectProduct(1);
         productDetailPage.increaseProductQty(2);
         productDetailPage.addToCart();
-        CartPage cartPage = productDetailPage.goToCart();
+        WebCartPage cartPage = productDetailPage.goToCart();
         //Assertions
     }
 
@@ -32,14 +32,14 @@ public class CartTests extends BaseTest {
         ProductDetailPage productDetailPage = homepage.selectProduct(1);
         productDetailPage.increaseProductQty(1);
         productDetailPage.addToCart();
-        CartPage cartPage = productDetailPage.goToCart();
+        WebCartPage cartPage = productDetailPage.goToCart();
         //Assertions
     }
 
     @Test
     public void testCartHammersFacade(){
         AddToCartFacade addToCartFacade= new AddToCartFacade();
-        CartPage cartPage = addToCartFacade.addToCart("Hammer", 2);
+        WebCartPage cartPage = addToCartFacade.addToCart("Hammer", 2);
 
         //Assertions
         Assert.assertTrue(cartPage.isProceedPresent());

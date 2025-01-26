@@ -14,10 +14,14 @@ public class HomePageTests extends BaseTest {
 
     @Test
     public void testCategories(){
-        POFactory POFactory = new POFactory();
-        HomePage homePage = POFactory.getHomePage(DriverManager.getDriver());
+        POFactory poFactory = new POFactory();
+        HomePage homePage = poFactory.getHomePage(DriverManager.getDriver());
+
         homePage.openCategories();
         Assert.assertEquals(homePage.getCategoriesList(), Arrays.asList("Hand Tools", "Power Tools", "Other", "Special Tools","","Rentals"));
+
+
+
     }
 
     @Test

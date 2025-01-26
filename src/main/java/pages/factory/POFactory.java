@@ -1,8 +1,11 @@
 package pages.factory;
 
 import org.openqa.selenium.WebDriver;
+import pages.interfaces.CartPage;
 import pages.interfaces.HomePage;
+import pages.mweb.MWebCartPage;
 import pages.mweb.MWebHomePage;
+import pages.web.WebCartPage;
 import pages.web.WebHomePage;
 import utilities.PropertyHandler;
 
@@ -18,5 +21,19 @@ public class POFactory {
         }
         return homePage;
     }
+
+    public CartPage getCartPage(WebDriver driver){
+        CartPage cartPage;
+        if(PropertyHandler.platform.equals("mweb")){
+            cartPage = new MWebCartPage(driver);
+        }
+        else{
+            cartPage = new WebCartPage(driver);
+        }
+        return cartPage;
+    }
+
+
+
 
 }
