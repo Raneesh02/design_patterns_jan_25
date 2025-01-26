@@ -25,6 +25,7 @@ public class AddToCartFacade {
         filterBar.selectFilterCategory(product.getType());
         ProductDetailPage productDetailPage = homepage.selectProduct(1);
         productDetailPage.increaseProductQty(product.getQty());
+        product.setName("");
         productDetailPage.addToCart();
         return productDetailPage.goToCart();
     }

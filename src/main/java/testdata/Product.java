@@ -14,6 +14,10 @@ public class Product {
         return name;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public String getType() {
         return type;
     }
@@ -41,7 +45,7 @@ public class Product {
             return this;
         }
 
-        public Product build(){
+        public Product build() {
             //api utilities to create product
             return new Product(this);
         }
