@@ -1,39 +1,20 @@
 package pages.factory;
 
 import org.openqa.selenium.WebDriver;
-import pages.interfaces.CartPage;
 import pages.interfaces.HomePage;
-import pages.mweb.MWebCartPage;
-import pages.mweb.MWebHomePage;
-import pages.web.WebCartPage;
-import pages.web.WebHomePage;
 import utilities.PropertyHandler;
 
-public class POFactory {
+public abstract class POFactory {
+    public abstract HomePage getHomepage(WebDriver driver);
 
-    public HomePage getHomePage(WebDriver driver){
-        HomePage homePage;
-        if(PropertyHandler.platform.equals("mweb")){
-            homePage = new MWebHomePage(driver);
+    public static POFactory getFactory(){
+        POFactory poFactory;
+        switch (PropertyHandler.platform){
+            case "mweb": poFactory = new MWebPOFactory();break;
+            case "web": poFactory = new WebPOFactory();break;
+            default: throw new IllegalArgumentException("Not a valid platform"+PropertyHandler.platform);
         }
-        else{
-            homePage = new WebHomePage(driver);
-        }
-        return homePage;
+        return poFactory;
     }
-
-    public CartPage getCartPage(WebDriver driver){
-        CartPage cartPage;
-        if(PropertyHandler.platform.equals("mweb")){
-            cartPage = new MWebCartPage(driver);
-        }
-        else{
-            cartPage = new WebCartPage(driver);
-        }
-        return cartPage;
-    }
-
-
-
 
 }
