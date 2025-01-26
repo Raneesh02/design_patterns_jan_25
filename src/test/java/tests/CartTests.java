@@ -5,11 +5,15 @@ import Base.DriverManager;
 import com.beust.ah.A;
 import facades.AddToCartFacade;
 import org.testng.Assert;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import pages.CartPage;
 import pages.FilterSideBar;
 import pages.Homepage;
 import pages.ProductDetailPage;
+import testdata.Product;
+
+import java.util.List;
 
 public class CartTests extends BaseTest {
 
@@ -39,11 +43,37 @@ public class CartTests extends BaseTest {
 
     @Test
     public void testCartHammersFacade(){
+        //create product via api
+        Product product = new Product.ProductBuilder()
+                .setType("Hammer")
+                .setName("Thor Hammer")
+                .setQty(2).build();
+
+        //use the product pojo
         AddToCartFacade addToCartFacade= new AddToCartFacade();
-        CartPage cartPage = addToCartFacade.addToCart("Hammer", 2);
+        CartPage cartPage = addToCartFacade.addToCart(product);
 
         //Assertions
         Assert.assertTrue(cartPage.isProceedPresent());
-        Assert.assertTrue(cartPage.getProductName().contains("Hammer"));
+        Assert.assertTrue(cartPage.getProductName().contains(product.getType()));
     }
+
+    @Test
+    public void testCartPliersBuilder(){
+        //create product via api
+        Product product = new Product.ProductBuilder()
+                .setType("Pliers")
+                .setName("Thor Pliers")
+                .setQty(2).build();
+
+        //use the product pojo
+        AddToCartFacade addToCartFacade= new AddToCartFacade();
+        CartPage cartPage = addToCartFacade.addToCart(product);
+
+        //Assertions
+        Assert.assertTrue(cartPage.isProceedPresent());
+        Assert.assertTrue(cartPage.getProductName().contains(product.getName()));
+    }
+
+
 }
