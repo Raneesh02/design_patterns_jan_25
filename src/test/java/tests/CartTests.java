@@ -2,20 +2,19 @@ package tests;
 
 import Base.BaseTest;
 import Base.DriverManager;
-import com.beust.ah.A;
 import facades.AddToCartFacade;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.CartPage;
 import pages.FilterSideBar;
-import pages.Homepage;
+import pages.web.WebHomePage;
 import pages.ProductDetailPage;
 
 public class CartTests extends BaseTest {
 
     @Test
     public void testCartHammers(){
-        Homepage homepage = new Homepage(DriverManager.getDriver());
+        WebHomePage homepage = new WebHomePage(DriverManager.getDriver());
         FilterSideBar filterBar = homepage.getFilterBar();
         filterBar.selectFilterCategory("Hammer");
         ProductDetailPage productDetailPage = homepage.selectProduct(1);
@@ -27,7 +26,7 @@ public class CartTests extends BaseTest {
 
     @Test
     public void testCartPliers(){
-        Homepage homepage = new Homepage(DriverManager.getDriver());
+        WebHomePage homepage = new WebHomePage(DriverManager.getDriver());
         FilterSideBar filterBar = homepage.getFilterBar();
         filterBar.selectFilterCategory("Pliers");
         ProductDetailPage productDetailPage = homepage.selectProduct(1);
