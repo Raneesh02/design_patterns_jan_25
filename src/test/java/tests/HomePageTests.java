@@ -2,13 +2,11 @@ package tests;
 
 import Base.BaseTest;
 import Base.DriverManager;
-import facades.AddToCartFacade;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.interfaces.HomePage;
-import pages.mweb.MWebHomePage;
+import pages.factory.POFactory;
 import pages.web.WebHomePage;
-import utilities.PropertyHandler;
 
 import java.util.Arrays;
 
@@ -16,17 +14,19 @@ public class HomePageTests extends BaseTest {
 
     @Test
     public void testCategories(){
-        HomePage homePage;
-        if(PropertyHandler.platform.equals("mweb")){
-            homePage = new MWebHomePage(DriverManager.getDriver());
-        }
-        else{
-            homePage = new WebHomePage(DriverManager.getDriver());
-        }
+        POFactory POFactory = new POFactory();
+        HomePage homePage = POFactory.getHomePage(DriverManager.getDriver());
         homePage.openCategories();
         Assert.assertEquals(homePage.getCategoriesList(), Arrays.asList("Hand Tools", "Power Tools", "Other", "Special Tools","","Rentals"));
     }
 
+    @Test
+    public void testCategories2(){
+        POFactory POFactory = new POFactory();
+        HomePage homePage = POFactory.getHomePage(DriverManager.getDriver());
+        homePage.getCategoriesList();
+        Assert.assertEquals(homePage.getCategoriesList(), Arrays.asList("Hand Tools", "Power Tools", "Other", "Special Tools","","Rentals"));
+    }
 
 
     @Test
