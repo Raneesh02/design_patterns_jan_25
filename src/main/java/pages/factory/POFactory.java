@@ -1,11 +1,13 @@
 package pages.factory;
 
 import org.openqa.selenium.WebDriver;
+import pages.interfaces.CartPage;
 import pages.interfaces.HomePage;
 import utilities.PropertyHandler;
 
 public abstract class POFactory {
     public abstract HomePage getHomepage(WebDriver driver);
+    public abstract CartPage getCartPage(WebDriver driver);
 
     public static POFactory getFactory(){
         POFactory poFactory;
